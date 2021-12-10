@@ -13,7 +13,6 @@ var memSafe = &sync.Mutex{}
 
 func main() {
 	existingDrive := GetTheAllDrive()
-	fmt.Println(existingDrive)
 	fmt.Println("Press ctr+c to exit")
 	fmt.Println(`Enter  the file type .pdf .exe .ppt et cetera..
 	`)
@@ -27,12 +26,10 @@ func main() {
 	wg := &sync.WaitGroup{}
 	os.Mkdir(folder[1], 0777)
 	homeDrive := homePath
-	fmt.Println(homeDrive)
 
 	for p := 0; p < len(existingDrive); p++ {
 		subPathDrive := GetAllSubDirectoryPath(existingDrive[p] + ":\\")
 		for i := 0; i < len(subPathDrive)-1; i++ {
-
 			wg.Add(2)
 			go ThrowDirectoryName(existingDrive[p]+":\\"+subPathDrive[i], wg, fileExt)
 			go ThrowDirectoryName(existingDrive[p]+":\\"+subPathDrive[i+1], wg, fileExt)
