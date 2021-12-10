@@ -16,7 +16,8 @@ func main() {
 	fmt.Println("Press ctr+c to exit")
 	fmt.Println(`Enter  the file type .pdf .exe .ppt et cetera..
 	`)
-	subPath := GetAllSubDirectoryPath("C:\\Users\\shegade")
+	homePath, _ := os.UserHomeDir()
+	subPath := GetAllSubDirectoryPath(homePath)
 	start := time.Now()
 
 	var fileExt string
@@ -24,7 +25,6 @@ func main() {
 	folder := strings.Split(fileExt, ".")
 	wg := &sync.WaitGroup{}
 	os.Mkdir(folder[1], 0777)
-	homePath, _ := os.UserHomeDir()
 	homeDrive := homePath
 	fmt.Println(homeDrive)
 
