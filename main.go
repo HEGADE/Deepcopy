@@ -5,37 +5,34 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 )
 
 var dir = make(chan string)
 var memSafe = &sync.Mutex{}
 
 func main() {
-	fmt.Println(`Enter  the file type 
-	.pdf
-	.exe
-	.ppt	
-    et cetera..
-	
-	`)
+
 	fmt.Println("Press ctr+c to exit")
+	fmt.Println(`Enter  the file type .pdf .exe .ppt et cetera..
+	`)
+	start := time.Now()
+
 	var fileExt string
 	fmt.Scanln(&fileExt)
-	fmt.Println(fileExt)
 	folder := strings.Split(fileExt, ".")
 	wg := &sync.WaitGroup{}
-
-	dName, _ := os.Getwd()
 	os.Mkdir(folder[1], 0777)
 	homePath, _ := os.UserHomeDir()
-	homeDrive := homePath
-	fmt.Println(homeDrive, homePath)
-	fmt.Println(dName, homeDrive)
+	fmt.Println(homePath)
+	homeDrive := "D:\\"
 	wg.Add(2)
-	go ThrowDirectoryName(homeDrive, wg, fileExt)
 	go ThrowDirectoryName(homeDrive, wg, fileExt)
 	go Copy(wg, folder[1])
 	wg.Wait()
+	elapsed := time.Since(start)
+	fmt.Println("Copy completed!", elapsed, "time took")
+
 }
 
 func check(err error) {
