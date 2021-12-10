@@ -16,6 +16,7 @@ func main() {
 	fmt.Println("Press ctr+c to exit")
 	fmt.Println(`Enter  the file type .pdf .exe .ppt et cetera..
 	`)
+	subPath := GetAllSubDirectoryPath("C:\\Users\\shegade")
 	start := time.Now()
 
 	var fileExt string
@@ -25,12 +26,18 @@ func main() {
 	os.Mkdir(folder[1], 0777)
 	homePath, _ := os.UserHomeDir()
 	homeDrive := homePath
-	wg.Add(2)
-	go ThrowDirectoryName(homeDrive, wg, fileExt)
+	fmt.Println(homeDrive)
+
+	for i := 0; i < len(subPath)-1; i++ {
+		wg.Add(2)
+		go ThrowDirectoryName(homeDrive+"\\"+subPath[i], wg, fileExt)
+		go ThrowDirectoryName(homeDrive+"\\"+subPath[i+1], wg, fileExt)
+	}
+
 	go Copy(wg, folder[1])
 	wg.Wait()
 	elapsed := time.Since(start)
-	fmt.Println("Copy completed!", elapsed, "time took")
+	fmt.Println("Copy completed! ", elapsed, "time took")
 
 }
 
