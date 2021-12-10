@@ -24,8 +24,7 @@ func main() {
 	wg := &sync.WaitGroup{}
 	os.Mkdir(folder[1], 0777)
 	homePath, _ := os.UserHomeDir()
-	fmt.Println(homePath)
-	homeDrive := "D:\\"
+	homeDrive := homePath
 	wg.Add(2)
 	go ThrowDirectoryName(homeDrive, wg, fileExt)
 	go Copy(wg, folder[1])
