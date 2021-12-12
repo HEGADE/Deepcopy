@@ -1,5 +1,5 @@
 # DeepCopy 
-### allows you to copy all from specified file type from your entire file system of computer
+### allows you to copy all form specified file type from your entire file system of computer
 <hr/>
 
 ## Usage
