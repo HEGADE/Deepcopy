@@ -1,6 +1,5 @@
 # DeepCopy ©️©️
- portable app that allows you to copy all form of specified file type from your entire file system of computer,
- you can carry this inside a pendrive and can run directly from there ,it will copy all the specified file into that pen drive
+it is a portable app that allows you to copy all forms of specified file types from your entire file system of the computer, you can carry this inside a Pendrive and can run directly from there, it will copy all the specified files into that pen drive
 <hr/>
 
 ## Usage
