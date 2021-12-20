@@ -23,9 +23,9 @@ func main() {
 	var fileExt string
 	fmt.Scanln(&fileExt)
 	start := time.Now()
-	folder := strings.Split(fileExt, ".")
+	folder := strings.Split(fileExt, ".")[1]
 	wg := &sync.WaitGroup{}
-	os.Mkdir(folder[1], 0777)
+	os.Mkdir(folder, 0777)
 	homeDrive := homePath
 
 	for p := 0; p < len(existingDrive); p++ {
@@ -43,7 +43,7 @@ func main() {
 		go file.ThrowDirectoryName(homeDrive+"\\"+subPath[i+1], wg, fileExt)
 	}
 
-	go Copy(wg, folder[1])
+	go Copy(wg, folder)
 	wg.Wait()
 	elapsed := time.Since(start)
 	fmt.Println("Copy completed! ", elapsed, "time took")
