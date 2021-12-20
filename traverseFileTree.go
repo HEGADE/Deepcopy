@@ -8,6 +8,9 @@ import (
 	"sync"
 )
 
+type File struct {
+}
+
 var possibleDrive = []string{
 	"A",
 	"B",
@@ -36,7 +39,7 @@ var possibleDrive = []string{
 	"Z",
 }
 
-func ThrowDirectoryName(homeDrive string, wg *sync.WaitGroup, fileExt string) {
+func (file *File) ThrowDirectoryName(homeDrive string, wg *sync.WaitGroup, fileExt string) {
 	defer wg.Done()
 	fileErr := filepath.Walk(homeDrive, func(path string, info fs.FileInfo, err error) error {
 		if filepath.Ext(path) == fileExt {
@@ -54,7 +57,7 @@ func ThrowDirectoryName(homeDrive string, wg *sync.WaitGroup, fileExt string) {
 }
 
 // Getting all subdirecory
-func GetAllSubDirectoryPath(homeDrive string) []string {
+func (file *File) GetAllSubDirectoryPath(homeDrive string) []string {
 	subPath := []string{}
 	filesBuf, _ := ioutil.ReadDir(homeDrive)
 	for _, path := range filesBuf {
