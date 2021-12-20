@@ -1,6 +1,6 @@
 # DeepCopy ©️©️
  portable app that allows you to copy all form of specified file type from your entire file system of computer,
- you can carrry this inside a pendrive and can run diirectly from there ,it will copy all the specified file into that pen drive
+ you can carry this inside a pendrive and can run directly from there ,it will copy all the specified file into that pen drive
 <hr/>
 
 ## Usage
@@ -10,9 +10,9 @@
  
 ## key things
 -  speed 🚄🚄
--  optimised for file fetching 🚀🚀
--  uses go routines to carryout cuncurrent execution  😱😱
+-  optimized for file fetching 🚀🚀
+-  uses go routines to carryout concurrent execution  😱😱
 
-[Downlload ](https://github.com/HEGADE/Deepcopy/blob/main/Deepcopy.exe)
+[Download ](https://github.com/HEGADE/Deepcopy/blob/main/Deepcopy.exe)
 
 ## I'm not responsible for any misuse of this app
