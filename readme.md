@@ -13,6 +13,6 @@
 -  optimised for file fetching 🚀🚀
 -  uses go routines to carryout cuncurrent execution  😱😱
 
-
+[Downlload ](https://github.com/HEGADE/Deepcopy/blob/main/Deepcopy.exe)
 
 ## I'm not responsible for any misuse of this app
