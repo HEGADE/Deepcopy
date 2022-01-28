@@ -12,6 +12,7 @@ func Copy(wg *sync.WaitGroup, folder string) {
 	for {
 		select {
 		case <-dir:
+
 			wg.Add(1)
 			go MakeCopy(wg, <-dir, folder)
 

@@ -12,13 +12,25 @@ var dir = make(chan string)
 var memSafe = &sync.Mutex{}
 
 func main() {
+	existingDrive := GetTheAllDrive()
+	homePath, _ := os.UserHomeDir()
+	fmt.Println("For entry system copy Enter 1 or for custom path copy Enter 2")
+	var choice int
+	fmt.Scanln(&choice)
+	if choice == 2 {
+		fmt.Println("Enter the custom path")
+		var customPath string
+		fmt.Scanln(&customPath)
+		homePath = customPath
+		existingDrive = nil
+
+	}
+	//156.8953ms time took
 	var fileExt string
 	file := File{}
-	existingDrive := GetTheAllDrive()
 	fmt.Println("Press ctr+c to exit")
 	fmt.Println(`Enter  the file type .pdf .exe .ppt et cetera..
 	`)
-	homePath, _ := os.UserHomeDir()
 	subPath := file.GetAllSubDirectoryPath(homePath)
 
 	fmt.Scanln(&fileExt)
