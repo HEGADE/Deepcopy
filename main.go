@@ -12,6 +12,7 @@ var dir = make(chan string)
 var memSafe = &sync.Mutex{}
 
 func main() {
+	var fileExt string
 	file := File{}
 	existingDrive := GetTheAllDrive()
 	fmt.Println("Press ctr+c to exit")
@@ -20,7 +21,6 @@ func main() {
 	homePath, _ := os.UserHomeDir()
 	subPath := file.GetAllSubDirectoryPath(homePath)
 
-	var fileExt string
 	fmt.Scanln(&fileExt)
 	start := time.Now()
 	folder := strings.Split(fileExt, ".")[1]
@@ -38,6 +38,7 @@ func main() {
 
 	}
 	for i := 0; i < len(subPath)-1; i++ {
+
 		wg.Add(2)
 		go file.ThrowDirectoryName(homeDrive+"\\"+subPath[i], wg, fileExt)
 		go file.ThrowDirectoryName(homeDrive+"\\"+subPath[i+1], wg, fileExt)
