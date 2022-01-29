@@ -14,18 +14,18 @@ var existingDrive []string
 var homePath string
 
 func init() {
-	fmt.Println("Press ctr+c to Exit!")
+	logMessage(WARNING)
 	fmt.Println()
 	existingDrive = GetTheAllDrive()
 	homePath, _ = os.UserHomeDir()
 }
 
 func main() {
-	fmt.Println("For Entire system copy Enter 1 or For custom path copy Enter 2")
+	logMessage(INFO)
 	var choice int
 	fmt.Scanln(&choice)
 	if choice == 2 {
-		fmt.Println("Enter the custom path")
+		logMessage(PATHINFO)
 		var customPath string
 		fmt.Scanln(&customPath)
 		homePath = customPath
@@ -37,13 +37,12 @@ func main() {
 
 	subPath := file.GetAllSubDirectoryPath(homePath)
 	if len(subPath) == 0 {
-		fmt.Println("No such Directory found")
+		logMessage(ERROR)
 		time.Sleep(time.Second * 2)
 		return
 	}
 
-	fmt.Println(`Enter  the File type .pdf .exe .ppt et cetera..
-	`)
+	logMessage(OPTION)
 
 	fmt.Scanln(&fileExt)
 	start := time.Now()
@@ -80,4 +79,8 @@ func check(err error) {
 		fmt.Println(err.Error())
 
 	}
+}
+
+func logMessage(msg string) {
+	fmt.Println(msg)
 }
