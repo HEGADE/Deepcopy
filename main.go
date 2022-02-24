@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 	"sync"
@@ -65,6 +66,7 @@ func main() {
 		wg.Add(2)
 		go file.ThrowDirectoryName(homeDrive+"\\"+subPath[i], wg, fileExt)
 		go file.ThrowDirectoryName(homeDrive+"\\"+subPath[i+1], wg, fileExt)
+
 	}
 
 	go Copy(wg, folder)
@@ -82,5 +84,6 @@ func check(err error) {
 }
 
 func logMessage(msg string) {
-	fmt.Println(msg)
+	custom := log.New(os.Stdout, "--->", 2)
+	custom.Println(msg)
 }

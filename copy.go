@@ -8,23 +8,22 @@ import (
 )
 
 func Copy(wg *sync.WaitGroup, folder string) {
-	defer wg.Done()
 	for {
 		select {
 		case <-dir:
 
 			wg.Add(1)
-			go MakeCopy(wg, <-dir, folder)
+			go MakeCopy(wg, dir, folder)
 
 		}
 	}
 
 }
 
-func MakeCopy(wg *sync.WaitGroup, dir string, folder string) {
+func MakeCopy(wg *sync.WaitGroup, dir chan string, folder string) {
 	defer wg.Done()
-	copiedFileName := strings.Split(dir, "\\")
-	srcFile, err := os.Open(dir)
+	copiedFileName := strings.Split(<-dir, "\\")
+	srcFile, err := os.Open(<-dir)
 	check(err)
 
 	destFile, err := os.Create(folder + "/" + copiedFileName[len(copiedFileName)-1])
